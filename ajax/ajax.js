@@ -1,23 +1,22 @@
-﻿
-	$(document).on('click', '#btn-add', function (e) {
-		var data = $("#user_form").serialize();
-		$.ajax({
-			data: data,
-			type: "post",
-			url: "backend/save.php",
-			success: function (dataResult) {
-				var dataResult = JSON.parse(dataResult);
-				if (dataResult.statusCode == 200) {
-					$('#addEmployeeModal').modal('hide');
-					alert('Data added successfully !');
-					location.reload();
-				}
-				else if (dataResult.statusCode == 201) {
-					alert(dataResult);
-				}
+﻿$(document).on('click', '#btn-add', function (e) {
+	var data = $("#user_form").serialize();
+	$.ajax({
+		data: data,
+		type: "post",
+		url: "backend/save.php",
+		success: function (dataResult) {
+			var dataResult = JSON.parse(dataResult);
+			if (dataResult.statusCode == 200) {
+				$('#addEmployeeModal').modal('hide');
+				alert('Data added successfully !');
+				location.reload();
 			}
-		});
+			else if (dataResult.statusCode == 201) {
+				alert(dataResult);
+			}
+		}
 	});
+});
 $(document).on('click', '.update', function (e) {
 	var id = $(this).attr("data-id");
 	var name = $(this).attr("data-name");
@@ -32,26 +31,26 @@ $(document).on('click', '.update', function (e) {
 	$('#rank_u').val(rank);
 	$('#position_u').val(position);
 });
-	
-	$(document).on('click', '#update', function (e) {
-		var data = $("#update_form").serialize();
-		$.ajax({
-			data: data,
-			type: "post",
-			url: "backend/save.php",
-			success: function (dataResult) {
-				var dataResult = JSON.parse(dataResult);
-				if (dataResult.statusCode == 200) {
-					$('#editEmployeeModal').modal('hide');
-					alert('Data updated successfully !');
-					location.reload();
-				}
-				else if (dataResult.statusCode == 201) {
-					alert(dataResult);
-				}
+
+$(document).on('click', '#update', function (e) {
+	var data = $("#update_form").serialize();
+	$.ajax({
+		data: data,
+		type: "post",
+		url: "backend/save.php",
+		success: function (dataResult) {
+			var dataResult = JSON.parse(dataResult);
+			if (dataResult.statusCode == 200) {
+				$('#editEmployeeModal').modal('hide');
+				alert('Data updated successfully !');
+				location.reload();
 			}
-		});
+			else if (dataResult.statusCode == 201) {
+				alert(dataResult);
+			}
+		}
 	});
+});
 $(document).on("click", ".delete", function () {
 	var id = $(this).attr("data-id");
 	$('#id_d').val(id);
@@ -124,4 +123,4 @@ $(document).ready(function () {
 			$("#selectAll").prop("checked", false);
 		}
 	});
-});
+})
